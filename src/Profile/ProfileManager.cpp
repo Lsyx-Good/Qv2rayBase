@@ -335,6 +335,20 @@ namespace Qv2rayBase::Profile
             }
         }
 
+        if (!root.routing.overrideRoute)
+        {
+            if (groupRouting.overrideRoute)
+            {
+                root.routing.route = groupRouting.route;
+                JsonStructHelper::MergeJson(root.routing.route, groupRouting.route);
+            }
+            else
+            {
+                root.routing.rules = globalRouting.rules;
+                JsonStructHelper::MergeJson(root.routing.route, globalRouting.route);
+            }
+        }
+
         const auto newProfile = Qv2rayBaseLibrary::PluginAPIHost()->PreprocessProfile(root);
 
         auto errMsg = Qv2rayBaseLibrary::KernelManager()->StartConnection(identifier, newProfile);

@@ -168,18 +168,6 @@ namespace Qv2rayBase::Utils
     {
         return !addr.isEmpty() && (IsIPv4Address(addr) || IsIPv6Address(addr));
     }
-
-    inline bool IsValidV2RayDNSServer(const QString &addr)
-    {
-        return addr == "localhost" || addr == "fakedns" //
-               || IsIPv4Address(addr)                   //
-               || IsIPv6Address(addr)                   //
-               || addr.startsWith("https://")           //
-               || addr.startsWith("https+local://")     //
-               || addr.startsWith("quic+local://")      //
-               || addr.startsWith("tcp://")             //
-               || addr.startsWith("tcp+local://");
-    }
 } // namespace Qv2rayBase::Utils
 
 using namespace Qv2rayBase::Utils;

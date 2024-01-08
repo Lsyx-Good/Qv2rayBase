@@ -129,10 +129,10 @@ namespace Qv2rayBase::Profile
 
             d->kernels.push_back({ outbound.outboundSettings.protocol, std::move(pkernel) });
 
-            IOConnectionSettings pluginOutSettings;
-            pluginOutSettings.protocolSettings = IOProtocolSettings{ QJsonObject{ { "address", "127.0.0.1" }, { "port", pluginPort } } };
+
             outbound.outboundSettings.protocol = u"socks"_qs;
-            outbound.outboundSettings = pluginOutSettings;
+            outbound.outboundSettings.address = u"127.0.0.1"_qs;
+            outbound.outboundSettings.port = pluginPort;
 
             // Add the integration outbound to the list.
             processedOutbounds.append(outbound);
